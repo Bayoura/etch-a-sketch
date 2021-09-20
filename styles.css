@@ -5,17 +5,29 @@
 }
 
 .container {
+    user-select: none; /* IMPORTANT!!! */
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     width: 800px;
     height: 800px;
-    border: 1px solid red;
+    margin: 0 auto;
 }
 
 .grid-item {
     border: 1px solid black;
 }
 
-.grid-item:hover {
-    background: black;
+input {
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
 }
+
+input::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+}
+  
