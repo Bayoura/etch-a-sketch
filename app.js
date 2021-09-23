@@ -1,9 +1,11 @@
 const container_div = document.querySelector('.container');
-const options_div = document.querySelector('.options');
-const colorPicker_input = document.getElementById('colorPicker');
-const eraser_button = document.getElementById('eraser');
+const colorPicker_input = document.getElementById('color-picker');
 const black_button = document.getElementById('black');
+const eraser_button = document.getElementById('eraser');
 const random_button = document.getElementById('random');
+const fillGrid_button = document.getElementById('fill-grid');
+const clear_button = document.getElementById('clear-grid');
+const toggleBorders_button = document.getElementById('toggle-borders');
 const defaultColor = 'black';
 
 let currentColor = defaultColor;
@@ -25,35 +27,37 @@ const gridItem_div = document.querySelector('.grid-item');
 
 //---------------------------------------DRAWING-FUNCTIONS-------------------------------------------
 
-container_div.addEventListener('mousedown', () => mouseDown = true);
-container_div.addEventListener('mouseup', () => mouseDown = false); 
+window.addEventListener('mousedown', () => mouseDown = true);
+window.addEventListener('mouseup', () => mouseDown = false); 
+
+function draw() {
+    gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('mousemove', () => {        
+        if (mouseDown) gridItem_div.style.background = currentColor;
+    }));
+    gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('click', () => gridItem_div.style.background = currentColor));
+}
 
 function setColor(color) {
     currentColor = color;
 }
 
-colorPicker_input.oninput = () => setColor(colorPicker_input.value);
-eraser_button.onclick = () => setColor('white');
-black_button.onclick = () => setColor('black');
-random_button.onclick = () => setColor(getRandomColor());
-
-gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('mousemove', () => {    
-    if (mouseDown) gridItem_div.style.background = currentColor;      
-}));
-   
-gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('click', () => gridItem_div.style.background = currentColor));
-
 function getRandomColor() {
-    let r = Math.floor(Math.random() * 255);
-    let g = Math.floor(Math.random() * 255);
-    let b = Math.floor(Math.random() * 255);
-    let randomColor = `rgb(${r}, ${g}, ${b})`;
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let randomColor = `rgb(${r}, ${g}, ${b})`; 
     return randomColor;
 }
 
-// gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('mousemove', () => {    
-//     if (mouseDown) gridItem_div.style.background = colorInput();      
-// }));
-   
-// gridItemList_div.forEach(gridItem_div => gridItem_div.addEventListener('click', () => gridItem_div.style.background = colorInput()));
+colorPicker_input.oninput = () => setColor(colorPicker_input.value);
+black_button.onclick = () => setColor('black');
+eraser_button.onclick = () => setColor('white');
+random_button.onclick = () => setColor(getRandomColor());
+fillGrid_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.style.background = currentColor);
+clear_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.style.background = 'white');
+toggleBorders_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.classList.toggle('no-border'));
 
+draw();
+
+//more features: scale grid
+//test different browser, add browser prefix (user-select and transition);
