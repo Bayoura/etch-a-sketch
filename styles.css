@@ -5,6 +5,7 @@
 }
 
 .container {
+    border: 1px solid black;
     user-select: none; /* IMPORTANT!!! */
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -15,9 +16,18 @@
 
 .grid-item {
     border: 1px solid black;
+    transition: .2s ease-in;
 }
 
-input {
+.grid-item:hover {
+    background-color: white;
+} 
+
+.no-border {
+    border: none;
+}
+
+#color-picker {
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -25,7 +35,7 @@ input {
     height: 80px;
 }
 
-input::-webkit-color-swatch {
+#color-picker::-webkit-color-swatch {
     border: none;
     border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
