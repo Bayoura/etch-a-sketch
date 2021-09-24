@@ -23,7 +23,7 @@ function changeGridSize(userInput) {
         gridItem_div.className = 'grid-item';
         container_div.appendChild(gridItem_div);
     }
-    let pxSize = 800 / userInput;
+    let pxSize = 750 / userInput;
     container_div.style.gridTemplateColumns = `repeat(${userInput}, ${pxSize}px)`;
     container_div.style.gridTemplateRows = `repeat(${userInput}, ${pxSize}px)`;
     gridItemList_div = document.querySelectorAll('.grid-item');
