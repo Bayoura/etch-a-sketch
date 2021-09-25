@@ -164,6 +164,7 @@ a:hover {
 #size-range {
     -webkit-appearance: none;
     width: 80%;
+    background: transparent;
 }
   
 #size-range:focus {
