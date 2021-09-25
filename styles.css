@@ -51,14 +51,9 @@ h2 {
     gap: 50px;
 }
 
-p {
-    color: var(--brown);
-}
-
 .button-box {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     gap: 25px;
 }
 
@@ -88,6 +83,10 @@ button:hover {
     text-align: center;
 }
 
+p {
+    color: var(--brown);
+}
+
 .text {
     font-size: 2.3rem;
 }
@@ -96,8 +95,8 @@ button:hover {
     border: none;
     border-radius: 50%;
     cursor: pointer;
-    width: 100px;
     height: 100px;
+    width: 100px;
     transition: all .3s;
 }
 
@@ -144,6 +143,22 @@ button:hover {
     border: none;
 }
 
+/* ---------------------------FOOTER--------------------------------- */
+
+footer {
+    padding: 10px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+    
+a { 
+   color: var(--brown); 
+}
+
+a:hover {
+    color: var(--red);
+}
+
 /* The styling below is solely for the range input (but it's cross browser compatible) */
   
 #size-range {
@@ -176,29 +191,25 @@ button:hover {
     margin-top: -12px; 
 }
 
-#size-range:focus::-webkit-slider-runnable-track {
-    background: #367ebd;
-}
-
 /* All the same stuff for Firefox */
 #size-range::-moz-range-track {
     width: 80%;
     height: 8.4px;
     cursor: pointer;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #3071a9;
+    background: var(--cream);
     border-radius: 1.3px;
-    border: 0.2px solid #010101;
+    border: 0.2px solid var(--brown);
 }
 
 #size-range::-moz-range-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
-    height: 36px;
+    -webkit-appearance: none;
+    border: 1px solid var(--brown);
+    height: 30px;
     width: 16px;
-    border-radius: 3px;
-    background: #ffffff;
+    border-radius: 4px;
+    background: var(--red);
     cursor: pointer;
+    margin-top: -12px; 
 }
 
 /* All the same stuff for IE */
@@ -213,33 +224,22 @@ button:hover {
 }
   
 #size-range::-ms-fill-lower {
-    background: #2a6495;
-    border: 0.2px solid #010101;
+    background: var(--cream);
+    border: 0.2px solid var(--brown);
     border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
   
 #size-range::-ms-fill-upper {
-    background: #3071a9;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
+    background: var(--cream);
+    border: 0.2px solid var(--brown);
+    border-radius: 2.6px; 
 }
 
 #size-range::-ms-thumb {
-    box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    border: 1px solid #000000;
-    height: 36px;
+    border: 1px solid var(--brown);
+    height: 30px;
     width: 16px;
-    border-radius: 3px;
-    background: #ffffff;
-    cursor: pointer; 
-}
-  
-#size-range:focus::-ms-fill-lower {
-    background: #3071a9;
-}
- 
-#size-range:focus::-ms-fill-upper {
-    background: #367ebd; 
+    border-radius: 4px;
+    background: var(--red);
+    cursor: pointer;
 }
