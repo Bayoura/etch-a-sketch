@@ -8,7 +8,7 @@ const random_button = document.getElementById('random');
 const fillGrid_button = document.getElementById('fill-grid');
 const clear_button = document.getElementById('clear-grid');
 const toggleBorders_button = document.getElementById('toggle-borders');
-const defaultColor = 'black';
+const defaultColor = '#000000';
 
 let gridItemList_div;
 let gridItem_div;
@@ -39,8 +39,6 @@ sizeRange_input.addEventListener('input', () => {
 
 let removeGridItems = () => container_div.innerHTML = '';
 
-changeGridSize(16);
-
 //---------------------------------------DRAWING-FUNCTIONS-------------------------------------------
 
 window.addEventListener('mousedown', () => mouseDown = true);
@@ -55,24 +53,25 @@ function draw() {
 
 function setColor(color) {
     currentColor = color;
+    updateColorPicker(color);
 }
 
-function getRandomColor() {
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
-    let randomColor = `rgb(${r}, ${g}, ${b})`; 
-    return randomColor;
+let updateColorPicker = color => colorPicker_input.value = color;
+
+function getRandomHexColor() {       
+    let randomColor = Math.floor(Math.random() * 2 ** 24).toString(16).padStart(6, '0');       
+    randomColor = `#${randomColor}`;    
+    return(randomColor);
 }
 
 colorPicker_input.oninput = () => setColor(colorPicker_input.value);
-black_button.onclick = () => setColor('black');
-eraser_button.onclick = () => setColor('white');
-random_button.onclick = () => setColor(getRandomColor());
+black_button.onclick = () => setColor('#000000');
+eraser_button.onclick = () => setColor('#FFFFFF');
+random_button.onclick = () => setColor(getRandomHexColor());
 fillGrid_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.style.background = currentColor);
-clear_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.style.background = 'white');
+clear_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.style.background = '#FFFFFF');
 toggleBorders_button.onclick = () => gridItemList_div.forEach(gridItem_div => gridItem_div.classList.toggle('no-border'));
 
-draw();
 
-//test different browser, add browser prefix (user-select and transition);
+changeGridSize(16);
+draw();
